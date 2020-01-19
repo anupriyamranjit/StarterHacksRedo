@@ -30,6 +30,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
+    {% for employee in employeelocation %}
     <div class="box">
         <article class="media">
             <div class="media-left">
@@ -37,18 +38,19 @@
             <div class="media-content">
                 <div class="content">
                     <p>
-                        <span class="title">{{ Name }}</span>
+                        <span class="title">{{ employee.Name }}</span>
                         <br>
-                        <span class="subtitle"> Clients Location: {{ Employee_Location }} </span>
-                        <br> Longitude and Latitude: [-80.540, 43.473]
+                        <span class="subtitle"> Clients Location: {{ employee.Employee_Location }} </span>
+                        <br> Longitude and Latitude: {{employee.Coordinate}}
                         <br>
-                        <span class="subtitle"> Accuracy: {{ Accuracy }} m </span>
-                        <br> Last Update: {{ Last_Update }}
+                        <span class="subtitle"> Accuracy: {{ employee.Accuracy }} m </span>
+                        <br> Last Update: {{ employee.Last_Update }}
                     </p>
                 </div>
             </div>
         </article>
     </div>
+    {% endfor %}
 </div>
 
 
