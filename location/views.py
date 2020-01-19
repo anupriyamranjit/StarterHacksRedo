@@ -11,7 +11,7 @@ def index(request):
     }
     employeelocation = []
     for person in Employee:
-        employee_location = requests.get(url.format(person), headers=privatekey).json()
+        employee_location = requests.get(url.format(person.ID_Device), headers=privatekey).json()
         try:
             Location_Value = (employee_location['user']['geofences'])[0]['description']
         except IndexError:
@@ -22,10 +22,10 @@ def index(request):
             'Employee_Location': Location_Value,
             'Accuracy': employee_location['user']['locationAccuracy'],
             'Last_Update': employee_location['user']['actualUpdatedAt'],
-            'Coordinate' : [round(employee_location['user']['location']['coordinates'][0], 3),round(employee_location['user']['location']['coordinates'][1], 3)]
+            'Coordinate' : [round(employee_location['user']['location']['coordinates'][0], 3),round(employee_location['user']['location']['coordinates'][1], 3)],
+            'TypeofPhone' : employee_location['user']['deviceType']
             }
         employeelocation.append(employee)
     context = {'employeelocation' : employeelocation }
     
     return render(request, 'location/index.html', context)
-

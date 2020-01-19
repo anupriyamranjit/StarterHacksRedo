@@ -13,6 +13,12 @@
             <div class="container">
                 <h1 class="title">
                     Dashboard
+                    <div style="float:right;">
+            <form>
+         <input type="button" onclick="window.location.href = 'http://127.0.0.1:8000/admin/';" value="Admin"/>
+      </form>
+
+        </div>
                 </h1>
             </div>
         </div>
@@ -40,11 +46,14 @@
                     <p>
                         <span class="title">{{ employee.Name }}</span>
                         <br>
-                        <span class="subtitle"> Clients Location: {{ employee.Employee_Location }} </span>
-                        <br> Longitude and Latitude: {{employee.Coordinate}}
+                        <span class="subtitle"> Location: {{ employee.Employee_Location }} </span>
                         <br>
-                        <span class="subtitle"> Accuracy: {{ employee.Accuracy }} m </span>
+                        <span class="subtitle">  Device Type: {{ employee.TypeofPhone }} </span>
+                        <br>
+                        <span class="subtitle"> Accuracy: {{ employee.Accuracy }} m</span>
                         <br> Last Update: {{ employee.Last_Update }}
+                        <br>
+                        <span> Longitude and Latitude: {{employee.Coordinate}} </span>
                     </p>
                 </div>
             </div>
